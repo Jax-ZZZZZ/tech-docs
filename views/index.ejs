@@ -1,0 +1,26 @@
+<%- include('layout', { body: `
+<div class="col-md-3 sidebar">
+${Object.values(docs).map(group => `
+<div class="menu-group">
+<div class="menu-title">🏠 ${group.name}</div>
+${group.children.map(cat => `
+<div>
+<div class="menu-cat-title" onclick="toggle(this)">${cat.name}</div>
+<ul class="menu-items">
+${cat.items.map(i => `
+<li><a href="/?doc=${i.id}">${i.title}</a></li>
+`).join('')}
+</ul>
+</div>
+`).join('')}
+</div>
+`).join('')}
+</div>
+
+
+<div class="col-md-9">
+<div class="content">
+${htmlContent ? htmlContent : '<p>请选择左侧文档</p>'}
+</div>
+</div>
+` }) %>
