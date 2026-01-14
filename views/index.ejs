@@ -1,5 +1,5 @@
 <%- include('layout', { body: `
-<div class="col-md-3 sidebar">
+<div class="col-md-3 sidebar" id="sidebar">
 ${Object.values(docs).map(group => `
 <div class="menu-group">
 <div class="menu-title">🏠 ${group.name}</div>
@@ -18,9 +18,12 @@ ${cat.items.map(i => `
 </div>
 
 
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+
 <div class="col-md-9">
 <div class="content">
-${htmlContent ? htmlContent : '<p>请选择左侧文档</p>'}
+${htmlContent ? htmlContent : '<p>welcome to Tech Docs</p>'}
 </div>
 </div>
 ` }) %>

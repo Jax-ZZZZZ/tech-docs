@@ -3,12 +3,12 @@ module.exports = {
     name: '打印机设置',
     children: [
       {
-        name: 'Epson',
+        name: 'Printer Drivers',
         items: [
           {
-            id: 'epson-80mm',
-            title: 'Epson 80mm 安装',
-            file: 'printer/epson-80mm.md'
+            id: 'printer-drivers',
+            title: 'Printer Drivers Download',
+            file: 'printer/drivers.md'
           }
         ]
       }
@@ -19,18 +19,28 @@ module.exports = {
     name: '刷卡机设置',
     children: [
       {
-        name: 'PAX',
+        name: '刷卡机型号',
         items: [
           {
             id: 'pax-a80',
-            title: 'PAX A80 初始化',
+            title: 'PAX A80 设置',
             file: 'terminal/pax-a80.md'
           },
           {
+            id: 'pax-a35',
+            title: 'PAX A35 设置',
+            file: 'terminal/pax-a35.md'
+          },
+          {
             id: 'pax-s300',
-            title: 'PAX S300 初始化',
+            title: 'PAX S300 设置',
             file: 'terminal/pax-s300.md'
-          }
+          },
+          {
+            id: 'pax-a920',
+            title: 'PAX A920 设置',
+            file: 'terminal/pax-a920.md'
+          },
         ]
       }
     ]
