@@ -2,17 +2,23 @@
 <div class="col-md-3 sidebar" id="sidebar">
 ${Object.values(docs).map(group => `
 <div class="menu-group">
-<div class="menu-title">🏠 ${group.name}</div>
-${group.children.map(cat => `
-<div>
-<div class="menu-cat-title" onclick="toggle(this)">${cat.name}</div>
-<ul class="menu-items">
-${cat.items.map(i => `
-<li><a href="/?doc=${i.id}">${i.title}</a></li>
-`).join('')}
-</ul>
-</div>
-`).join('')}
+  <!-- group 本身作为可展开项 -->
+  <div class="menu-cat-title" onclick="toggle(this)">
+    📂 ${group.name}
+  </div>
+
+  <ul class="menu-items">
+    ${group.children.map(cat => `
+      ${
+        /* 如果你还想保留 cat 层级 */
+        cat.items.map(i => `
+          <li>
+            <a href="/?doc=${i.id}">${i.title}</a>
+          </li>
+        `).join('')
+      }
+    `).join('')}
+  </ul>
 </div>
 `).join('')}
 </div>

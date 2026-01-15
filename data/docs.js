@@ -1,22 +1,21 @@
 module.exports = {
-  printer: {
-    name: '打印机设置',
+    pos: {
+    name: 'POS 业务',
     children: [
       {
-        name: 'Printer Drivers',
+        name: 'POS相关',
         items: [
           {
-            id: 'printer-drivers',
-            title: 'Printer Drivers Download',
-            file: 'printer/drivers.md'
+            id: 'pos-guide',
+            title: 'POS 使用须知',
+            file: 'pos/pos-guide.md'
           }
         ]
       }
     ]
   },
-
   terminal: {
-    name: '刷卡机设置',
+    name: 'Merchant Services 业务',
     children: [
       {
         name: '刷卡机型号',
@@ -45,20 +44,58 @@ module.exports = {
       }
     ]
   },
-
-    pos: {
-    name: 'POS设置',
+  
+  printer: {
+    name: '硬件中心',
     children: [
       {
-        name: 'pos',
+        name: '打印机驱动',
         items: [
           {
-            id: 'pos',
-            title: 'POS 初始化',
-            file: 'pos/pos.md'
+            id: 'printer-drivers',
+            title: 'Printer Drivers Download',
+            file: 'printer/drivers.md'
+          }
+        ]
+      }
+    ]
+  },
+
+    software: {
+    name: '下载中心',
+    children: [
+      {
+        name: '软件下载',
+        items: [
+          {
+            id: 'software-download-1',
+            title: '新人培训工具下载',
+            file: 'software/download-1.md'
+          },
+          {
+            id: 'software-download-2',
+            title: '餐厅软件下载',
+            file: 'software/download-2.md'
+          }
+        ]
+      }
+    ]
+  },
+  
+  shoppinglist: {
+    name: '购买建议',
+    children: [
+      {
+        name: '产品推荐',
+        items: [
+          {
+            id: '购买链接',
+            title: 'shopping list',
+            file: 'shoppinglist/shoppinglist.md'
           }
         ]
       }
     ]
   }
+
 };
