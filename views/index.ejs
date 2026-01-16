@@ -4,7 +4,7 @@ ${Object.values(docs).map(group => `
 <div class="menu-group">
   <!-- group 本身作为可展开项 -->
   <div class="menu-cat-title" onclick="toggle(this)">
-    📂 ${group.name}
+    📂 ${(typeof group.name === 'object' ? (group.name[lang] || group.name.zh) : group.name)}
   </div>
 
   <ul class="menu-items">
@@ -13,7 +13,9 @@ ${Object.values(docs).map(group => `
         /* 如果你还想保留 cat 层级 */
         cat.items.map(i => `
           <li>
-            <a href="/?doc=${i.id}">${i.title}</a>
+            <li><a href="/?doc=${i.id}&lang=${lang}">
+              ${(typeof cat.name === 'object' ? (cat.name[lang] || cat.name.zh) : cat.name)}
+            </a></li>
           </li>
         `).join('')
       }

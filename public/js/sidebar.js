@@ -54,22 +54,29 @@ items.classList.toggle('open', hasVisible);
 
 
 // 深色模式
+// 深色 / 浅色模式（带文字）
 const toggleBtn = document.getElementById('themeToggle');
-if (toggleBtn) {
-const current = localStorage.getItem('theme') || 'light';
-document.documentElement.dataset.theme = current;
 
-
-toggleBtn.textContent = current === 'dark' ? '☀️' : '🌙';
-
-
-toggleBtn.onclick = () => {
-const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-document.documentElement.dataset.theme = next;
-localStorage.setItem('theme', next);
-toggleBtn.textContent = next === 'dark' ? '☀️' : '🌙';
-};
+function updateThemeBtnText(theme) {
+  if (!toggleBtn) return;
+  // 当前是 dark → 显示 Light（表示可以切换到 Light）
+  toggleBtn.textContent = theme === 'dark' ? '☀️ Light' : '🌙 Dark';
 }
+
+if (toggleBtn) {
+  const current = localStorage.getItem('theme') || 'light';
+  document.documentElement.dataset.theme = current;
+  updateThemeBtnText(current);
+
+  toggleBtn.onclick = () => {
+    const next =
+      document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem('theme', next);
+    updateThemeBtnText(next);
+  };
+}
+
 
 
 // Mobile sidebar drawer
@@ -146,3 +153,55 @@ document.querySelectorAll('.sidebar a').forEach(a => {
     if (typeof closeSidebar === 'function') closeSidebar();
   });
 })();
+
+
+// Language toggle (zh/en)
+const langBtn = document.getElementById('langToggle');
+
+function getLang() {
+  const params = new URLSearchParams(window.location.search);
+  const qLang = params.get('lang');
+  if (qLang === 'en' || qLang === 'zh') return qLang;
+
+  const saved = localStorage.getItem('lang');
+  if (saved === 'en' || saved === 'zh') return saved;
+
+  return 'zh';
+}
+
+function setLang(next) {
+  localStorage.setItem('lang', next);
+}
+
+function updateLangBtnText(currentLang) {
+  if (!langBtn) return;
+  // 当前是中文 => 按钮显示 English；当前是英文 => 显示 中文
+  const label = currentLang === 'zh' ? 'English' : '中文';
+  langBtn.textContent = `🌐 ${label}`;
+}
+
+const currentLang = getLang();
+setLang(currentLang);
+updateLangBtnText(currentLang);
+
+// 如果 URL 没带 lang，自动补上（避免第一次进入丢语言）
+(function ensureLangInUrl() {
+  const url = new URL(window.location.href);
+  if (!url.searchParams.get('lang')) {
+    url.searchParams.set('lang', currentLang);
+    window.history.replaceState({}, '', url.toString());
+  }
+})();
+
+if (langBtn) {
+  langBtn.addEventListener('click', () => {
+    const now = getLang();
+    const next = now === 'zh' ? 'en' : 'zh';
+    setLang(next);
+
+    const url = new URL(window.location.href);
+    url.searchParams.set('lang', next);
+    // 保持 doc 不变，只切语言
+    window.location.href = url.toString();
+  });
+}

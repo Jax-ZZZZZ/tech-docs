@@ -299,3 +299,24 @@ body {
 .content img.img-lg {
   max-width: 100%;
 }
+
+#themeToggle,
+#langToggle {
+  font-size: 14px;
+  padding: 4px 6px;
+  white-space: nowrap; /* 防止换行 */
+}
+
+#langToggle:hover {
+  opacity: 0.8;
+}
+
+/* Icon buttons (theme / language) */
+.icon-btn {
+  color: var(--text);        /* ✅ 关键：显式使用主题文字色 */
+}
+
+/* hover 时稍微有反馈 */
+.icon-btn:hover {
+  opacity: 0.8;
+}

@@ -24,6 +24,8 @@ marked.setOptions({
 /* ======================
    Helpers
 ====================== */
+const DOCS_ROOT = path.join(__dirname, 'docs');
+
 function findDocMeta(docId) {
   for (const group of Object.values(docs)) {
     for (const cat of group.children) {
@@ -34,8 +36,13 @@ function findDocMeta(docId) {
   return null;
 }
 
-function loadMarkdown(filePath) {
-  const fullPath = path.join(__dirname, 'docs', filePath);
+function loadMarkdown(relPath) {
+  if (!relPath) return null;
+
+  // 拼出绝对路径，并防止 .. 路径穿越
+  const fullPath = path.join(DOCS_ROOT, relPath);
+  if (!fullPath.startsWith(DOCS_ROOT)) return null;
+
   if (!fs.existsSync(fullPath)) return null;
   return fs.readFileSync(fullPath, 'utf-8');
 }
@@ -44,26 +51,41 @@ function loadMarkdown(filePath) {
    Routes
 ====================== */
 app.get('/', (req, res) => {
-  const { doc } = req.query;
+  const docId = req.query.doc || null;
+  const lang = req.query.lang === 'en' ? 'en' : 'zh'; // 默认 zh
 
   let currentDoc = null;
   let htmlContent = null;
 
-  if (doc) {
-    const meta = findDocMeta(doc);
+  if (docId) {
+    const meta = findDocMeta(docId);
+
     if (meta) {
-      const markdown = loadMarkdown(meta.file);
+      currentDoc = meta;
+
+      // ✅ 按语言选择文件：优先 en/zh，对应不到就 fallback zh
+      const relPath =
+        (meta.files && meta.files[lang]) ||
+        (meta.files && meta.files.zh) ||
+        null;
+
+      const markdown = loadMarkdown(relPath);
+
       if (markdown) {
-        currentDoc = meta;
         htmlContent = marked.parse(markdown);
+      } else {
+        htmlContent = `<p>未找到文档文件：${relPath || ''}</p>`;
       }
+    } else {
+      htmlContent = `<p>未找到文档：${docId}</p>`;
     }
   }
 
   res.render('index', {
     docs,
     currentDoc,
-    htmlContent
+    htmlContent,
+    lang // ✅ 传给 EJS，让链接能带 lang
   });
 });
 
