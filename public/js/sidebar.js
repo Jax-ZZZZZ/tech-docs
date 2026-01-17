@@ -60,32 +60,123 @@ function toggle(el) {
 /* =========================
    Search (sidebar only)
 ========================= */
+/* =========================
+   Search (sidebar only)
+========================= */
+/* =========================
+   Search (sidebar only) + highlight
+========================= */
 (function initSearch() {
   const searchInput = document.getElementById('searchInput');
   if (!searchInput) return;
 
-  searchInput.addEventListener('input', e => {
-    const keyword = e.target.value.toLowerCase();
+  const hint = document.getElementById('sidebarSearchHint');
 
+  function restoreOpenCatsState() {
+    const openCats = getOpenCats();
+    document.querySelectorAll('.menu-cat-title').forEach(cat => {
+      const key = cat.textContent.trim();
+      const items = cat.nextElementSibling;
+      const shouldOpen = openCats.includes(key);
+      cat.classList.toggle('open', shouldOpen);
+      if (items) items.classList.toggle('open', shouldOpen);
+    });
+  }
+
+  function showAllItems() {
+    document.querySelectorAll('.menu-items li').forEach(li => {
+      li.style.display = '';
+    });
+  }
+
+  // 记录原始文本，用于恢复（避免多次 mark 嵌套）
+  function cacheOriginalText() {
+    document.querySelectorAll('.menu-items a').forEach(a => {
+      if (!a.dataset.rawText) a.dataset.rawText = a.textContent;
+    });
+  }
+
+  function clearHighlights() {
+    document.querySelectorAll('.menu-items a').forEach(a => {
+      if (a.dataset.rawText) a.textContent = a.dataset.rawText;
+    });
+  }
+
+  // 简单的字符串高亮（不支持正则特殊字符问题：已做 escape）
+  function escapeRegExp(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  function highlight(keyword) {
+    if (!keyword) return;
+    const re = new RegExp(escapeRegExp(keyword), 'ig');
+
+    document.querySelectorAll('.menu-items a').forEach(a => {
+      const raw = a.dataset.rawText || a.textContent;
+      if (!raw) return;
+
+      if (!re.test(raw)) {
+        a.textContent = raw;
+        return;
+      }
+
+      // 重新创建一次（避免保留旧 mark）
+      a.innerHTML = raw.replace(re, m => `<mark>${m}</mark>`);
+    });
+  }
+
+  cacheOriginalText();
+
+  searchInput.addEventListener('input', e => {
+    const keyword = e.target.value.toLowerCase().trim();
+
+    // 关键词为空：恢复默认（显示全部 + 恢复展开 + 清高亮 + 隐藏提示）
+    if (!keyword) {
+      showAllItems();
+      restoreOpenCatsState();
+      clearHighlights();
+      if (hint) hint.style.display = 'none';
+      return;
+    }
+
+    // 先清高亮，再按新关键词高亮（避免叠加）
+    clearHighlights();
+
+    // 过滤 item
+    let matchCount = 0;
     document.querySelectorAll('.menu-items li').forEach(li => {
       const text = li.innerText.toLowerCase();
-      li.style.display = text.includes(keyword) ? '' : 'none';
+      const matched = text.includes(keyword);
+      li.style.display = matched ? '' : 'none';
+      if (matched) matchCount++;
     });
 
-    // Auto expand groups with visible results
+    // 无结果：恢复全部显示 + 显示提示（不锁死分类）
+    if (matchCount === 0) {
+      showAllItems();
+      if (hint) hint.style.display = 'flex';
+      return;
+    }
+
+    // 有结果：隐藏提示 + 高亮命中 + 自动展开含结果分类
+    if (hint) hint.style.display = 'none';
+    highlight(keyword);
+
     document.querySelectorAll('.menu-cat-title').forEach(cat => {
       const items = cat.nextElementSibling;
       if (!items) return;
 
-      const hasVisible = [...items.children].some(
-        li => li.style.display !== 'none'
-      );
-
-      cat.classList.toggle('open', hasVisible);
-      items.classList.toggle('open', hasVisible);
+      const hasVisible = [...items.children].some(li => li.style.display !== 'none');
+      if (hasVisible) {
+        cat.classList.add('open');
+        items.classList.add('open');
+      }
     });
   });
 })();
+
+
+
 
 /* =========================
    Theme toggle (Light / Dark)

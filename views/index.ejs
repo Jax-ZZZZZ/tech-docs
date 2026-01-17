@@ -1,3 +1,11 @@
+
+<div id="sidebarSearchHint" class="sidebar-search-hint" style="display:none;">
+  <span>🔍</span>
+  <span class="hint-text">
+    <%= lang === 'en' ? 'No matching documents' : '未找到匹配的文档' %>
+  </span>
+</div>
+
 <%- include('layout', { body: `
 <div class="col-md-3 sidebar" id="sidebar">
   ${Object.values(docs).map(group => `
