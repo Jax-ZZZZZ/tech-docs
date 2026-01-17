@@ -1,13 +1,14 @@
-
-<div id="sidebarSearchHint" class="sidebar-search-hint" style="display:none;">
-  <span>🔍</span>
-  <span class="hint-text">
-    <%= lang === 'en' ? 'No matching documents' : '未找到匹配的文档' %>
-  </span>
-</div>
-
 <%- include('layout', { body: `
 <div class="col-md-3 sidebar" id="sidebar">
+
+  <!-- 搜索无结果提示 -->
+  <div id="sidebarSearchHint" class="sidebar-search-hint" style="display:none;">
+    <span>🔍</span>
+    <span class="hint-text">
+      ${lang === 'en' ? 'No matching documents' : '未找到匹配的文档'}
+    </span>
+  </div>
+
   ${Object.values(docs).map(group => `
     <div class="menu-group">
       <div class="menu-cat-title" onclick="toggle(this)" role="button" tabindex="0">
@@ -31,6 +32,7 @@
       </ul>
     </div>
   `).join('')}
+
 </div>
 
 <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
@@ -40,9 +42,20 @@
     ${
       htmlContent
         ? htmlContent
-        : (lang === 'en'
-            ? '<p>Welcome to the Help Center. Please choose a document from the left.</p>'
-            : '<p>欢迎来到操作指南，请从左侧选择一个文档。</p>')
+        : `
+          <div class="empty-state">
+            <p class="empty-text desktop-only">
+              ${lang === 'en'
+                ? 'Welcome to the Help Center. Please select a document to get started.'
+                : '欢迎来到操作指南，请选择一个文档开始查看。'}
+            </p>
+            <p class="empty-text mobile-only">
+              ${lang === 'en'
+                ? 'Welcome! Tap “Help Center” above to explore the guides.'
+                : '点击上方「操作指南」开始查看。'}
+            </p>
+          </div>
+        `
     }
   </div>
 </div>
