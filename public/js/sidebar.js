@@ -1,3 +1,6 @@
+/* =========================
+   Utils: Sidebar open state
+========================= */
 function getOpenCats() {
   try {
     return JSON.parse(localStorage.getItem('openCats') || '[]');
@@ -10,113 +13,36 @@ function setOpenCats(arr) {
   localStorage.setItem('openCats', JSON.stringify(arr));
 }
 
+/* =========================
+   Sidebar expand / collapse
+========================= */
 function toggle(el) {
-  el.classList.toggle('open');
+  if (!el) return;
+
   const list = el.nextElementSibling;
+  if (!list) return;
+
+  el.classList.toggle('open');
   list.classList.toggle('open');
 
   const key = el.textContent.trim();
   const openCats = getOpenCats();
   const isOpen = el.classList.contains('open');
 
-  if (isOpen) {
-    if (!openCats.includes(key)) openCats.push(key);
-  } else {
+  if (isOpen && !openCats.includes(key)) {
+    openCats.push(key);
+  } else if (!isOpen) {
     const idx = openCats.indexOf(key);
     if (idx !== -1) openCats.splice(idx, 1);
   }
+
   setOpenCats(openCats);
 }
 
-
-// 文档搜索
-const searchInput = document.getElementById('searchInput');
-if (searchInput) {
-searchInput.addEventListener('input', e => {
-const keyword = e.target.value.toLowerCase();
-
-
-document.querySelectorAll('.menu-items li').forEach(li => {
-const text = li.innerText.toLowerCase();
-li.style.display = text.includes(keyword) ? 'block' : 'none';
-});
-
-
-// 自动展开有结果的分类
-document.querySelectorAll('.menu-cat-title').forEach(cat => {
-const items = cat.nextElementSibling;
-const hasVisible = [...items.children].some(li => li.style.display !== 'none');
-cat.classList.toggle('open', hasVisible);
-items.classList.toggle('open', hasVisible);
-});
-});
-}
-
-
-// 深色模式
-// 深色 / 浅色模式（带文字）
-const toggleBtn = document.getElementById('themeToggle');
-
-function updateThemeBtnText(theme) {
-  if (!toggleBtn) return;
-  // 当前是 dark → 显示 Light（表示可以切换到 Light）
-  toggleBtn.textContent = theme === 'dark' ? '☀️ Light' : '🌙 Dark';
-}
-
-if (toggleBtn) {
-  const current = localStorage.getItem('theme') || 'light';
-  document.documentElement.dataset.theme = current;
-  updateThemeBtnText(current);
-
-  toggleBtn.onclick = () => {
-    const next =
-      document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-    document.documentElement.dataset.theme = next;
-    localStorage.setItem('theme', next);
-    updateThemeBtnText(next);
-  };
-}
-
-
-
-// Mobile sidebar drawer
-const menuToggle = document.getElementById('menuToggle');
-const sidebar = document.getElementById('sidebar');
-const backdrop = document.getElementById('sidebarBackdrop');
-
-function openSidebar() {
-  if (!sidebar) return;
-  sidebar.classList.add('is-open');
-  if (backdrop) backdrop.classList.add('show');
-  document.body.classList.add('no-scroll');
-}
-
-function closeSidebar() {
-  if (!sidebar) return;
-  sidebar.classList.remove('is-open');
-  if (backdrop) backdrop.classList.remove('show');
-  document.body.classList.remove('no-scroll');
-}
-
-if (menuToggle && sidebar) {
-  menuToggle.addEventListener('click', () => {
-    const isOpen = sidebar.classList.contains('is-open');
-    isOpen ? closeSidebar() : openSidebar();
-  });
-}
-
-if (backdrop) {
-  backdrop.addEventListener('click', closeSidebar);
-}
-
-// 点击菜单链接后自动关闭（手机端体验更好）
-document.querySelectorAll('.sidebar a').forEach(a => {
-  a.addEventListener('click', () => {
-    if (window.innerWidth < 768) closeSidebar();
-  });
-});
-
-// 恢复展开状态：默认 openCats 为空 => 刚访问时就是全部合并 ✅
+/* =========================
+   Restore expand state
+   (default: all collapsed)
+========================= */
 (function restoreOpenCats() {
   const openCats = getOpenCats();
   if (!openCats.length) return;
@@ -124,84 +50,165 @@ document.querySelectorAll('.sidebar a').forEach(a => {
   document.querySelectorAll('.menu-cat-title').forEach(cat => {
     const key = cat.textContent.trim();
     const items = cat.nextElementSibling;
-
     const shouldOpen = openCats.includes(key);
+
     cat.classList.toggle('open', shouldOpen);
-    items.classList.toggle('open', shouldOpen);
+    if (items) items.classList.toggle('open', shouldOpen);
   });
 })();
 
-// 点击 Tech Docs：清空展开状态，并把所有分类收起 ✅
-(function bindCollapseAll() {
-  const btn = document.getElementById('collapseAllBtn');
-  if (!btn) return;
+/* =========================
+   Search (sidebar only)
+========================= */
+(function initSearch() {
+  const searchInput = document.getElementById('searchInput');
+  if (!searchInput) return;
 
-  btn.style.cursor = 'pointer';
+  searchInput.addEventListener('input', e => {
+    const keyword = e.target.value.toLowerCase();
 
-  btn.addEventListener('click', () => {
-    // 1) 清空存储
-    localStorage.removeItem('openCats');
-
-    // 2) 收起所有分类
-    document.querySelectorAll('.menu-cat-title').forEach(cat => {
-      const items = cat.nextElementSibling;
-      cat.classList.remove('open');
-      if (items) items.classList.remove('open');
+    document.querySelectorAll('.menu-items li').forEach(li => {
+      const text = li.innerText.toLowerCase();
+      li.style.display = text.includes(keyword) ? '' : 'none';
     });
 
-    // 3) 手机端如果侧栏是抽屉，顺手关掉（可选，但体验更好）
-    if (typeof closeSidebar === 'function') closeSidebar();
+    // Auto expand groups with visible results
+    document.querySelectorAll('.menu-cat-title').forEach(cat => {
+      const items = cat.nextElementSibling;
+      if (!items) return;
+
+      const hasVisible = [...items.children].some(
+        li => li.style.display !== 'none'
+      );
+
+      cat.classList.toggle('open', hasVisible);
+      items.classList.toggle('open', hasVisible);
+    });
+  });
+})();
+
+/* =========================
+   Theme toggle (Light / Dark)
+========================= */
+(function initThemeToggle() {
+  const btn = document.getElementById('themeToggle');
+  if (!btn) return;
+
+  function updateText(theme) {
+    btn.textContent = theme === 'dark' ? '☀️ Light' : '🌙 Dark';
+  }
+
+  const current = localStorage.getItem('theme') || 'light';
+  document.documentElement.dataset.theme = current;
+  updateText(current);
+
+  btn.addEventListener('click', () => {
+    const next =
+      document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem('theme', next);
+    updateText(next);
+  });
+})();
+
+/* =========================
+   Mobile sidebar drawer
+========================= */
+(function initSidebarDrawer() {
+  const menuToggle = document.getElementById('homeBtn'); // 用 homeBtn 代替
+  const sidebar = document.getElementById('sidebar');
+  const backdrop = document.getElementById('sidebarBackdrop');
+
+  if (!sidebar) return;
+
+  function openSidebar() {
+    sidebar.classList.add('is-open');
+    backdrop && backdrop.classList.add('show');
+    document.body.classList.add('no-scroll');
+  }
+
+  function closeSidebar() {
+    sidebar.classList.remove('is-open');
+    backdrop && backdrop.classList.remove('show');
+    document.body.classList.remove('no-scroll');
+  }
+
+  if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+      sidebar.classList.contains('is-open')
+        ? closeSidebar()
+        : openSidebar();
+    });
+  }
+
+  (function bindHomeBehavior() {
+  const homeBtn = document.getElementById('homeBtn');
+  if (!homeBtn) return;
+
+  homeBtn.addEventListener('click', () => {
+    // 桌面端：回首页（保留 lang）
+    if (window.innerWidth >= 768) {
+      const url = new URL(window.location.href);
+      const lang = url.searchParams.get('lang') || 'zh';
+      window.location.href = `/?lang=${lang}`;
+    }
   });
 })();
 
 
-// Language toggle (zh/en)
-const langBtn = document.getElementById('langToggle');
+  backdrop && backdrop.addEventListener('click', closeSidebar);
 
-function getLang() {
-  const params = new URLSearchParams(window.location.search);
-  const qLang = params.get('lang');
-  if (qLang === 'en' || qLang === 'zh') return qLang;
+  // Close drawer after clicking doc (mobile)
+  document.querySelectorAll('.sidebar a').forEach(a => {
+    a.addEventListener('click', () => {
+      if (window.innerWidth < 768) closeSidebar();
+    });
+  });
+})();
 
-  const saved = localStorage.getItem('lang');
-  if (saved === 'en' || saved === 'zh') return saved;
+/* =========================
+   Language toggle (zh / en)
+========================= */
+(function initLangToggle() {
+  const btn = document.getElementById('langToggle');
+  if (!btn) return;
 
-  return 'zh';
-}
+  function getLang() {
+    const params = new URLSearchParams(window.location.search);
+    const qLang = params.get('lang');
+    if (qLang === 'en' || qLang === 'zh') return qLang;
 
-function setLang(next) {
-  localStorage.setItem('lang', next);
-}
+    const saved = localStorage.getItem('lang');
+    if (saved === 'en' || saved === 'zh') return saved;
 
-function updateLangBtnText(currentLang) {
-  if (!langBtn) return;
-  // 当前是中文 => 按钮显示 English；当前是英文 => 显示 中文
-  const label = currentLang === 'zh' ? 'English' : '中文';
-  langBtn.textContent = `🌐 ${label}`;
-}
+    return 'zh';
+  }
 
-const currentLang = getLang();
-setLang(currentLang);
-updateLangBtnText(currentLang);
+  function setLang(lang) {
+    localStorage.setItem('lang', lang);
+  }
 
-// 如果 URL 没带 lang，自动补上（避免第一次进入丢语言）
-(function ensureLangInUrl() {
+  function updateText(lang) {
+    btn.textContent = `🌐 ${lang === 'zh' ? 'English' : '中文'}`;
+  }
+
+  const currentLang = getLang();
+  setLang(currentLang);
+  updateText(currentLang);
+
+  // Ensure URL has lang
   const url = new URL(window.location.href);
   if (!url.searchParams.get('lang')) {
     url.searchParams.set('lang', currentLang);
     window.history.replaceState({}, '', url.toString());
   }
-})();
 
-if (langBtn) {
-  langBtn.addEventListener('click', () => {
-    const now = getLang();
-    const next = now === 'zh' ? 'en' : 'zh';
+  btn.addEventListener('click', () => {
+    const next = getLang() === 'zh' ? 'en' : 'zh';
     setLang(next);
 
     const url = new URL(window.location.href);
     url.searchParams.set('lang', next);
-    // 保持 doc 不变，只切语言
     window.location.href = url.toString();
   });
-}
+})();

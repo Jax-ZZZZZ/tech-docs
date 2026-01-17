@@ -25,14 +25,15 @@
    Base
 ========================= */
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
   background: var(--bg);
   color: var(--text);
 }
 
-/* 你没用到 .navbar（你用的是 .topbar），保留也不影响 */
-.navbar {
-  height: 56px;
+/* JS 用到：打开侧栏抽屉时禁止页面滚动 */
+.no-scroll {
+  overflow: hidden;
 }
 
 /* =========================
@@ -48,17 +49,12 @@ body {
   border-bottom: 1px solid var(--border);
 }
 
-.topbar-left {
+.topbar-left,
+.topbar-right {
   display: flex;
   align-items: center;
   gap: 10px;
   min-width: 0;
-}
-
-.topbar-title {
-  font-weight: 600;
-  cursor: pointer; 
-  user-select: none;
 }
 
 /* Desktop: center the search box */
@@ -66,15 +62,62 @@ body {
   flex: 1;
   min-width: 0;
   display: flex;
-  justify-content: center; /* ✅ 关键：居中 */
+  justify-content: center;
 }
 
+/* Buttons */
+.icon-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--text);
+  font-size: 14px;
+  padding: 4px 6px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
 
+.icon-btn:hover {
+  background: var(--hover);
+  opacity: 1;
+}
+
+/* Home link + Docs button share same style */
+.topbar-home,
+.topbar-docs {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* subtle underline to hint clickable */
+.topbar-home .home-text {
+  position: relative;
+}
+
+.topbar-home .home-text::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.28;
+}
+
+.topbar-home:hover .home-text::after {
+  opacity: 0.6;
+}
+
+/* Search */
 .search-input {
   width: 100%;
   max-width: 520px;
   padding: 8px 12px;
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid var(--border);
   background: var(--bg);
   color: var(--text);
@@ -82,13 +125,6 @@ body {
 
 .search-input::placeholder {
   color: var(--muted);
-}
-
-.icon-btn {
-  border: none;
-  background: transparent;
-  font-size: 18px;
-  cursor: pointer;
 }
 
 /* =========================
@@ -102,34 +138,20 @@ body {
 }
 
 .menu-group {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
-/* 一级菜单 */
-.menu-title {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  border-radius: 10px;
-  font-weight: 500;
-  color: var(--text);
-  cursor: pointer;
-}
-
-.menu-title:hover {
-  background: var(--hover);
-}
-
-/* 二级菜单标题 */
-/* Sidebar group title */
+/* Group title (clickable) */
 .menu-cat-title {
+  position: relative; /* ✅ 伪元素需要 */
   font-size: 14px;
   font-weight: 600;
   padding: 10px 12px 10px 36px;
   margin-top: 6px;
-  border-radius: 8px;
+  border-radius: 10px;
   color: var(--text);
+  cursor: pointer;
+  user-select: none;
 }
 
 .menu-cat-title:hover {
@@ -139,31 +161,31 @@ body {
 .menu-cat-title::before {
   content: '📁';
   position: absolute;
-  left: 14px;
+  left: 12px;
+  top: 10px;
   font-size: 14px;
 }
 
-.menu-cat-title.open::before {
-  transform: rotate(90deg);
-}
-
+/* caret */
 .menu-cat-title::after {
   content: '▾';
   position: absolute;
   right: 12px;
+  top: 11px;
   font-size: 12px;
-  opacity: 0.5;
+  opacity: 0.55;
+  transition: transform 0.2s ease;
 }
 
 .menu-cat-title.open::after {
   transform: rotate(180deg);
 }
 
-/* 文档列表 */
+/* Doc list */
 .menu-items {
   list-style: none;
   padding-left: 44px;
-  margin-bottom: 6px;
+  margin: 6px 0 2px;
   display: none;
 }
 
@@ -178,9 +200,10 @@ body {
 .menu-items a {
   display: block;
   padding: 6px 10px;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 13px;
   color: var(--text);
+  text-decoration: none;
   position: relative;
 }
 
@@ -195,7 +218,7 @@ body {
   background: var(--hover);
 }
 
-/* 当前文档高亮 */
+/* Active doc */
 .menu-items a.active {
   background: var(--accent);
   color: #fff;
@@ -204,7 +227,6 @@ body {
 .menu-items a.active::before {
   color: #fff;
 }
-
 
 /* =========================
    Content
@@ -236,26 +258,37 @@ body {
 }
 
 @media (max-width: 767.98px) {
-  /* 顶栏固定在顶部，避免滚动时被盖住 */
+  /* Topbar sticky */
   .topbar {
     position: sticky;
     top: 0;
     z-index: 2000;
     padding: 0 12px;
-    gap: 10px;
+    gap: 8px;
   }
 
-  /* 手机端：隐藏标题，释放空间 */
-  .topbar-title {
+  /* Mobile: hide search */
+  .topbar-center {
     display: none;
   }
 
-  .search-input {
-    padding: 8px 10px;
-    font-size: 14px;
+  /* Mobile: make left buttons compact */
+  .topbar-home {
+    max-width: 170px;
   }
 
-  /* Sidebar 抽屉：覆盖在内容上 */
+  .topbar-home .home-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Mobile: Docs button icon only (text hidden) */
+  .topbar-docs .docs-text {
+    display: none;
+  }
+
+  /* Sidebar drawer */
   #sidebar.sidebar {
     position: fixed;
     top: 56px;
@@ -265,21 +298,18 @@ body {
     height: calc(100vh - 56px);
     overflow-y: auto;
 
-    background: var(--panel);
-    border-right: 1px solid var(--border);
-
     transform: translateX(-105%);
     transition: transform 0.2s ease;
 
-    z-index: 1500;        /* 高于遮罩 */
-    pointer-events: auto; /* 确保可点击 */
+    z-index: 1500;
+    pointer-events: auto;
   }
 
   #sidebar.sidebar.is-open {
     transform: translateX(0);
   }
 
-  /* Backdrop：在 sidebar 后面 */
+  /* Backdrop */
   #sidebarBackdrop.sidebar-backdrop {
     display: block;
     position: fixed;
@@ -290,7 +320,7 @@ body {
 
     background: rgba(0, 0, 0, 0.35);
 
-    z-index: 1400;        /* 低于 sidebar */
+    z-index: 1400;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s ease;
@@ -298,10 +328,10 @@ body {
 
   #sidebarBackdrop.sidebar-backdrop.show {
     opacity: 1;
-    pointer-events: auto; /* 用于点击关闭 */
+    pointer-events: auto;
   }
 
-  /* 内容区手机端更紧凑 */
+  /* Content spacing */
   .content {
     margin: 12px;
     padding: 18px;
@@ -319,38 +349,15 @@ body {
   border-radius: 8px;
 }
 
-/* 小图 */
+/* Small / Medium / Large */
 .content img.img-sm {
   max-width: 300px;
 }
 
-/* 中图（默认文档插图） */
 .content img.img-md {
   max-width: 520px;
 }
 
-/* 大图 / 说明截图 */
 .content img.img-lg {
   max-width: 100%;
-}
-
-#themeToggle,
-#langToggle {
-  font-size: 14px;
-  padding: 4px 6px;
-  white-space: nowrap; /* 防止换行 */
-}
-
-#langToggle:hover {
-  opacity: 0.8;
-}
-
-/* Icon buttons (theme / language) */
-.icon-btn {
-  color: var(--text);        /* ✅ 关键：显式使用主题文字色 */
-}
-
-/* hover 时稍微有反馈 */
-.icon-btn:hover {
-  opacity: 0.8;
 }

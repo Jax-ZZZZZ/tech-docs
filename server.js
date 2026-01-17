@@ -27,24 +27,48 @@ marked.setOptions({
 const DOCS_ROOT = path.join(__dirname, 'docs');
 
 function findDocMeta(docId) {
+  if (!docId) return null;
+
   for (const group of Object.values(docs)) {
-    for (const cat of group.children) {
-      const item = cat.items.find(i => i.id === docId);
+    for (const cat of group.children || []) {
+      const item = (cat.items || []).find(i => i.id === docId);
       if (item) return item;
     }
   }
   return null;
 }
 
-function loadMarkdown(relPath) {
-  if (!relPath) return null;
+function safeJoinDocsRoot(relPath) {
+  // 防止空值 / 非字符串
+  if (!relPath || typeof relPath !== 'string') return null;
 
-  // 拼出绝对路径，并防止 .. 路径穿越
+  // 拼接并标准化
   const fullPath = path.join(DOCS_ROOT, relPath);
-  if (!fullPath.startsWith(DOCS_ROOT)) return null;
 
-  if (!fs.existsSync(fullPath)) return null;
-  return fs.readFileSync(fullPath, 'utf-8');
+  // 防目录穿越：必须仍在 DOCS_ROOT 内
+  if (!fullPath.startsWith(DOCS_ROOT + path.sep) && fullPath !== DOCS_ROOT) return null;
+
+  return fullPath;
+}
+
+function loadMarkdown(relPath) {
+  const fullPath = safeJoinDocsRoot(relPath);
+  if (!fullPath) return null;
+
+  try {
+    return fs.readFileSync(fullPath, 'utf-8');
+  } catch {
+    return null;
+  }
+}
+
+function pickLang(queryLang) {
+  return queryLang === 'en' ? 'en' : 'zh';
+}
+
+function pickDocPath(meta, lang) {
+  if (!meta || !meta.files) return null;
+  return meta.files[lang] || meta.files.zh || null;
 }
 
 /* ======================
@@ -52,7 +76,7 @@ function loadMarkdown(relPath) {
 ====================== */
 app.get('/', (req, res) => {
   const docId = req.query.doc || null;
-  const lang = req.query.lang === 'en' ? 'en' : 'zh'; // 默认 zh
+  const lang = pickLang(req.query.lang);
 
   let currentDoc = null;
   let htmlContent = null;
@@ -60,24 +84,19 @@ app.get('/', (req, res) => {
   if (docId) {
     const meta = findDocMeta(docId);
 
-    if (meta) {
+    if (!meta) {
+      htmlContent = `<p>Error 404: Doc Missing：${docId}</p>`;
+    } else {
       currentDoc = meta;
 
-      // ✅ 按语言选择文件：优先 en/zh，对应不到就 fallback zh
-      const relPath =
-        (meta.files && meta.files[lang]) ||
-        (meta.files && meta.files.zh) ||
-        null;
-
+      const relPath = pickDocPath(meta, lang);
       const markdown = loadMarkdown(relPath);
 
-      if (markdown) {
-        htmlContent = marked.parse(markdown);
-      } else {
+      if (!markdown) {
         htmlContent = `<p>Error 404: File Path Missing：${relPath || ''}</p>`;
+      } else {
+        htmlContent = marked.parse(markdown);
       }
-    } else {
-      htmlContent = `<p>Error 404: File Missing：${docId}</p>`;
     }
   }
 
@@ -85,7 +104,7 @@ app.get('/', (req, res) => {
     docs,
     currentDoc,
     htmlContent,
-    lang // ✅ 传给 EJS，让链接能带 lang
+    lang
   });
 });
 

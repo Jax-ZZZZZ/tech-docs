@@ -2,7 +2,7 @@
 <div class="col-md-3 sidebar" id="sidebar">
   ${Object.values(docs).map(group => `
     <div class="menu-group">
-      <div class="menu-cat-title" onclick="toggle(this)">
+      <div class="menu-cat-title" onclick="toggle(this)" role="button" tabindex="0">
         ${(typeof group.name === 'object' ? (group.name[lang] || group.name.zh) : group.name)}
       </div>
 
@@ -12,6 +12,7 @@
             <li>
               <a
                 href="/?doc=${i.id}&lang=${lang}"
+                data-doc="${i.id}"
                 class="${currentDoc && currentDoc.id === i.id ? 'active' : ''}"
               >
                 ${(typeof i.title === 'object' ? (i.title[lang] || i.title.zh) : i.title)}
@@ -28,7 +29,13 @@
 
 <div class="col-md-9">
   <div class="content">
-    ${htmlContent ? htmlContent : '<p>welcome to Tech Docs</p>'}
+    ${
+      htmlContent
+        ? htmlContent
+        : (lang === 'en'
+            ? '<p>Welcome to the Help Center. Please choose a document from the left.</p>'
+            : '<p>欢迎来到操作指南，请从左侧选择一个文档。</p>')
+    }
   </div>
 </div>
 ` }) %>
