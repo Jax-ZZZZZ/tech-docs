@@ -74,10 +74,10 @@ app.get('/', (req, res) => {
       if (markdown) {
         htmlContent = marked.parse(markdown);
       } else {
-        htmlContent = `<p>未找到文档文件：${relPath || ''}</p>`;
+        htmlContent = `<p>Error 404: File Path Missing：${relPath || ''}</p>`;
       }
     } else {
-      htmlContent = `<p>未找到文档：${docId}</p>`;
+      htmlContent = `<p>Error 404: File Missing：${docId}</p>`;
     }
   }
 

@@ -1,37 +1,34 @@
 <%- include('layout', { body: `
 <div class="col-md-3 sidebar" id="sidebar">
-${Object.values(docs).map(group => `
-<div class="menu-group">
-  <!-- group 本身作为可展开项 -->
-  <div class="menu-cat-title" onclick="toggle(this)">
-    📂 ${(typeof group.name === 'object' ? (group.name[lang] || group.name.zh) : group.name)}
-  </div>
+  ${Object.values(docs).map(group => `
+    <div class="menu-group">
+      <div class="menu-cat-title" onclick="toggle(this)">
+        ${(typeof group.name === 'object' ? (group.name[lang] || group.name.zh) : group.name)}
+      </div>
 
-  <ul class="menu-items">
-    ${group.children.map(cat => `
-      ${
-        /* 如果你还想保留 cat 层级 */
-        cat.items.map(i => `
-          <li>
-            <li><a href="/?doc=${i.id}&lang=${lang}">
-              ${(typeof cat.name === 'object' ? (cat.name[lang] || cat.name.zh) : cat.name)}
-            </a></li>
-          </li>
-        `).join('')
-      }
-    `).join('')}
-  </ul>
+      <ul class="menu-items">
+        ${group.children.map(cat => `
+          ${cat.items.map(i => `
+            <li>
+              <a
+                href="/?doc=${i.id}&lang=${lang}"
+                class="${currentDoc && currentDoc.id === i.id ? 'active' : ''}"
+              >
+                ${(typeof i.title === 'object' ? (i.title[lang] || i.title.zh) : i.title)}
+              </a>
+            </li>
+          `).join('')}
+        `).join('')}
+      </ul>
+    </div>
+  `).join('')}
 </div>
-`).join('')}
-</div>
-
 
 <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
-
 <div class="col-md-9">
-<div class="content">
-${htmlContent ? htmlContent : '<p>welcome to Tech Docs</p>'}
-</div>
+  <div class="content">
+    ${htmlContent ? htmlContent : '<p>welcome to Tech Docs</p>'}
+  </div>
 </div>
 ` }) %>
