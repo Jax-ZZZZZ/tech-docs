@@ -26,23 +26,15 @@ module.exports = {
         items: [
           {
             id: 'pax-s300',
-            title: { zh: 'PAX S300', en: 'PAX S300' },
+            title: { zh: 'PAX S300 & A35 基本操作', en: 'PAX S300 & A35 Basic Operations' },
             files: {
               zh: 'card-terminal-guide/pax-s300-cn.md',
               en: 'card-terminal-guide/pax-s300-en.md'
             }
           },
           {
-            id: 'pax-a35',
-            title: { zh: 'PAX A35', en: 'PAX A35' },
-            files: {
-              zh: 'card-terminal-guide/pax-a35-cn.md',
-              en: 'card-terminal-guide/pax-a35-en.md'
-            }
-          },
-          {
             id: 'pax-a80',
-            title: { zh: 'PAX A80', en: 'PAX A80' },
+            title: { zh: 'PAX A80 & A920 基本操作', en: 'PAX A80 & A920 Basic Operations' },
             files: {
               zh: 'card-terminal-guide/pax-a80-cn.md',
               en: 'card-terminal-guide/pax-a80-en.md'
@@ -50,18 +42,10 @@ module.exports = {
           },
           {
             id: 'pax-s80',
-            title: { zh: 'PAX S80', en: 'PAX S80' },
+            title: { zh: 'PAX S80 基本操作', en: 'PAX S80 Basic Operations' },
             files: {
               zh: 'card-terminal-guide/pax-s80-cn.md',
               en: 'card-terminal-guide/pax-s80-en.md'
-            }
-          },
-          {
-            id: 'pax-a920',
-            title: { zh: 'PAX A920', en: 'PAX A920' },
-            files: {
-              zh: 'card-terminal-guide/pax-a920-cn.md',
-              en: 'card-terminal-guide/pax-a920-en.md'
             }
           }
         ]

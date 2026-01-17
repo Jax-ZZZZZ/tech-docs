@@ -454,3 +454,55 @@ body {
 [data-theme="dark"] .menu-items mark {
   background: rgba(129, 140, 248, 0.28);
 }
+
+/* =========================
+   Content background images (light/dark)
+========================= */
+
+/* 让 .content 能承载伪元素背景层 */
+.content {
+  position: relative;
+  overflow: hidden;
+}
+
+/* 背景图层（默认 light） */
+.content::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+
+  background-image: url('/images/BM_Light.jpg');
+  background-repeat: no-repeat;
+  background-position: right top;   /* 你图 logo 在右上，建议 right top */
+  /*background-size: cover;           /* 大图用 cover 更舒服 */
+  background-size: 820px auto;
+  background-position: right 10px top -40px;
+  opacity: 0.18;                    /* ✅ 关键：淡一点，不抢正文 */
+
+  pointer-events: none;             /* ✅ 不挡点击 */
+  z-index: 0;
+}
+
+/* 让正文始终在背景之上 */
+.content > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Dark 模式换图 + 更低透明度 */
+[data-theme="dark"] .content::before {
+  background-image: url('/images/BM_Dark.jpg');
+  opacity: 0.12;
+}
+
+/* 移动端：再淡一些（手机屏更小，背景容易显得压迫） */
+@media (max-width: 767.98px) {
+  .content::before {
+    opacity: 0.12;
+    background-position: center top;
+  }
+
+  [data-theme="dark"] .content::before {
+    opacity: 0.08;
+  }
+}
