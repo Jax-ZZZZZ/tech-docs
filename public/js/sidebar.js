@@ -119,6 +119,19 @@ function toggle(el) {
   const sidebar = document.getElementById('sidebar');
   const backdrop = document.getElementById('sidebarBackdrop');
 
+  // ✅ iOS: prevent scroll chaining / page scroll when swiping inside sidebar
+  if (sidebar) {
+    sidebar.addEventListener(
+      'touchmove',
+      (e) => {
+        // 只要在 sidebar 内滑动，就不要让事件滚到 body
+        e.stopPropagation();
+      },
+      { passive: true }
+    );
+  }
+
+
   if (!sidebar) return;
 
   function openSidebar() {
@@ -164,6 +177,18 @@ function toggle(el) {
       if (window.innerWidth < 768) closeSidebar();
     });
   });
+
+  function preventBodyScroll(e) {
+    // 当 sidebar 打开时，禁止 body 滚动（但不影响 sidebar）
+    if (sidebar && sidebar.classList.contains('is-open')) {
+      // 如果触摸目标不在 sidebar 内，则阻止
+      if (!sidebar.contains(e.target)) e.preventDefault();
+    }
+  }
+
+  // 注意 passive:false，否则 preventDefault 无效
+  document.addEventListener('touchmove', preventBodyScroll, { passive: false });
+
 })();
 
 /* =========================

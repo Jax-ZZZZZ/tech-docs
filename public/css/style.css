@@ -292,11 +292,20 @@ body {
   #sidebar.sidebar {
     position: fixed;
     top: 56px;
+    bottom: 0;
     left: 0;
+
     width: 86%;
     max-width: 340px;
-    height: calc(100vh - 56px);
+
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;  /*✅ iOS：启用弹性滚动 */
+
+    touch-action: pan-y;          /* ✅ Chrome：允许纵向滚动手势 */
+    overscroll-behavior: contain; /* ✅ 防止滚动链传到页面 */
+
+    background: var(--panel);
+    border-right: 1px solid var(--border);
 
     transform: translateX(-105%);
     transition: transform 0.2s ease;
