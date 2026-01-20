@@ -1,5 +1,5 @@
 ## PAX A80 Basic Operations Guide
-> This guide applies to both PAX A80 and PAX A920 Pro, as the operation procedures are the same.
+> This guide also applies to  PAX A920 Pro, as the operation procedures are the same.
 
 ### 1. Sale (Payment)
 
@@ -18,7 +18,7 @@ Used for normal card or electronic payment transactions.
 6. Print or send the receipt after the transaction is approved
 
 🎥 **Operation Video:**  
-[Click to view Sale (Payment) operation video](https://www.youtube.com/watch?v=REPLACE_ME)
+[Click to view Sale (Payment) operation video](https://www.youtube.com/watch?v=DpbMeI0XvkI&list=PLUKpuydjO6RC0NT6H6KgBKV7RT8HJkYaq)
 
 ---
 
@@ -39,7 +39,7 @@ Used to cancel a transaction **on the same day before Batch settlement**.
 > ⚠️ Transactions that have already been batched **cannot be voided** and must be refunded instead.
 
 🎥 **Operation Video:**  
-[Click to view Void Sale operation video](https://www.youtube.com/watch?v=REPLACE_ME)
+[Click to view Void Sale operation video](https://www.youtube.com/watch?v=8raA9hEZVZc&list=PLUKpuydjO6RC0NT6H6KgBKV7RT8HJkYaq&index=2)
 
 ---
 
@@ -59,7 +59,7 @@ Used to add tips to a transaction that is **already completed but not yet batche
 > Commonly used when tips are added after the customer signs the receipt.
 
 🎥 **Operation Video:**  
-[Click to view Add Tips operation video](https://www.youtube.com/watch?v=REPLACE_ME)
+[Click to view Add Tips operation video](https://www.youtube.com/watch?v=pZ1w7Un9OBk&list=PLUKpuydjO6RC0NT6H6KgBKV7RT8HJkYaq&index=3)
 
 ---
 
@@ -78,7 +78,7 @@ Used to **submit all completed transactions of the day to the bank for settlemen
 > ⚠️ It is strongly recommended to run Batch **at least once at the end of each business day**.
 
 🎥 **Operation Video:**  
-[Click to view Batch (Settlement) operation video](https://www.youtube.com/watch?v=REPLACE_ME)
+[Click to view Batch (Settlement) operation video](https://www.youtube.com/watch?v=qlij4RCtub8&list=PLUKpuydjO6RC0NT6H6KgBKV7RT8HJkYaq&index=4)
 
 ---
 
@@ -98,7 +98,7 @@ commonly in cases of network issues or special tip adjustments.
 > ⚠️ This function carries higher risk and should only be used when there is a clear possibility of customer disputes.
 
 🎥 **Operation Video:**  
-[Click to view Force Auth operation video](https://www.youtube.com/watch?v=REPLACE_ME)
+[Click to view Force Auth operation video](https://www.youtube.com/watch?v=s159MRzH9Uo&list=PLUKpuydjO6RC0NT6H6KgBKV7RT8HJkYaq&index=5)
 
 ---
 
@@ -119,6 +119,6 @@ Used to refund transactions that have **already been batched**.
 > Refunds typically take **3–7 business days** to appear, depending on the customer’s bank.
 
 🎥 **Operation Video:**  
-[Click to view Refund operation video](https://www.youtube.com/watch?v=REPLACE_ME)
+[Click to view Refund operation video](https://www.youtube.com/watch?v=iNIMrr6uhC4&list=PLUKpuydjO6RC0NT6H6KgBKV7RT8HJkYaq&index=6)
 
 > This guide applies to both PAX A80 and PAX A920 Pro, as the operation procedures are the same.

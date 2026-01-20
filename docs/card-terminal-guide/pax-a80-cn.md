@@ -17,7 +17,7 @@
 6. 交易成功后打印或发送小票
 
 🎥 **操作视频：**  
-[点击查看 Sale（付款）操作视频](https://www.youtube.com/watch?v=REPLACE_ME)
+[点击查看 Sale（付款）操作视频](https://www.youtube.com/watch?v=DpbMeI0XvkI&list=PLUKpuydjO6RC0NT6H6KgBKV7RT8HJkYaq)
 
 ---
 
@@ -37,7 +37,7 @@
 > ⚠️ 已完成 Batch 的交易无法 Void，只能使用 Refund。
 
 🎥 **操作视频：**  
-[点击查看 Void Sale（取消付款）操作视频](https://www.youtube.com/watch?v=REPLACE_ME)
+[点击查看 Void Sale（取消付款）操作视频](https://www.youtube.com/watch?v=8raA9hEZVZc&list=PLUKpuydjO6RC0NT6H6KgBKV7RT8HJkYaq&index=2)
 
 ---
 
@@ -57,7 +57,7 @@
 > 常用于客人签字后填写小费的情况。
 
 🎥 **操作视频：**  
-[点击查看 Add Tips（添加小费）操作视频](https://www.youtube.com/watch?v=REPLACE_ME)
+[点击查看 Add Tips（添加小费）操作视频](https://www.youtube.com/watch?v=pZ1w7Un9OBk&list=PLUKpuydjO6RC0NT6H6KgBKV7RT8HJkYaq&index=3)
 
 ---
 
@@ -76,7 +76,7 @@
 > ⚠️ 建议每天营业结束后至少进行一次 Batch。
 
 🎥 **操作视频：**  
-[点击查看 Batch（结账 / 结算）操作视频](https://www.youtube.com/watch?v=REPLACE_ME)
+[点击查看 Batch（结账 / 结算）操作视频](https://www.youtube.com/watch?v=qlij4RCtub8&list=PLUKpuydjO6RC0NT6H6KgBKV7RT8HJkYaq&index=4)
 
 ---
 
@@ -96,7 +96,7 @@
 > ⚠️ 此功能风险较高，仅在明确有可能会被客人 Dispute 的风险后使用。
 
 🎥 **操作视频：**  
-[点击查看 Force Auth（强制授权）操作视频](https://www.youtube.com/watch?v=REPLACE_ME)
+[点击查看 Force Auth（强制授权）操作视频](https://www.youtube.com/watch?v=s159MRzH9Uo&list=PLUKpuydjO6RC0NT6H6KgBKV7RT8HJkYaq&index=5)
 
 ---
 
@@ -116,4 +116,4 @@
 > 退款到账时间通常为 **3–7 个工作日**，具体以客人银行为准。
 
 🎥 **操作视频：**  
-[点击查看 Refund（退款）操作视频](https://www.youtube.com/watch?v=REPLACE_ME)
+[点击查看 Refund（退款）操作视频](https://www.youtube.com/watch?v=iNIMrr6uhC4&list=PLUKpuydjO6RC0NT6H6KgBKV7RT8HJkYaq&index=6)

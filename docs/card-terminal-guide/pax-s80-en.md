@@ -19,7 +19,7 @@ Used for normal payment transactions.
 6. The terminal prints the transaction receipt
 
 🎥 **Operation Video:**  
-[Click to view Sale (Payment) operation video](https://www.youtube.com/watch?v=REPLACE_ME)
+[Click to view Sale (Payment) operation video](https://www.youtube.com/watch?v=rgnYBuvf--g&list=PLUKpuydjO6RAAq-U9QVmedqcX6QxRdj1P)
 
 ---
 
@@ -39,7 +39,7 @@ Used to cancel a transaction **on the same day before Batch settlement**.
 > ⚠️ Transactions that have already been batched **cannot be voided** and must be refunded instead.
 
 🎥 **Operation Video:**  
-[Click to view Void Sale operation video](https://www.youtube.com/watch?v=REPLACE_ME)
+[Click to view Void Sale operation video](https://www.youtube.com/watch?v=eEO8wVLUL24&list=PLUKpuydjO6RAAq-U9QVmedqcX6QxRdj1P&index=2)
 
 ---
 
@@ -59,7 +59,7 @@ Used to add tips to a transaction that is **completed but not yet batched**.
 > Commonly used when tips are added after the customer signs the receipt.
 
 🎥 **Operation Video:**  
-[Click to view Add Tips operation video](https://www.youtube.com/watch?v=REPLACE_ME)
+[Click to view Add Tips operation video](https://www.youtube.com/watch?v=fl45vg9MXGY&list=PLUKpuydjO6RAAq-U9QVmedqcX6QxRdj1P&index=3)
 
 ---
 
@@ -79,7 +79,7 @@ Used to submit all completed transactions of the day **to the bank for settlemen
 > ⚠️ It is strongly recommended to run Batch at least once at the end of each business day.
 
 🎥 **Operation Video:**  
-[Click to view Batch (Settlement) operation video](https://www.youtube.com/watch?v=REPLACE_ME)
+[Click to view Batch (Settlement) operation video](https://www.youtube.com/watch?v=qyfYjuPV4tg&list=PLUKpuydjO6RAAq-U9QVmedqcX6QxRdj1P&index=4)
 
 ---
 
@@ -101,7 +101,7 @@ commonly after a network issue or voice authorization.
 > ⚠️ This function carries higher risk and should only be used when a valid authorization code has been obtained.
 
 🎥 **Operation Video:**  
-[Click to view Force Auth operation video](https://www.youtube.com/watch?v=REPLACE_ME)
+[Click to view Force Auth operation video](https://www.youtube.com/watch?v=eURqH3oeqaA&list=PLUKpuydjO6RAAq-U9QVmedqcX6QxRdj1P&index=5)
 
 ---
 
@@ -122,4 +122,4 @@ Used to refund transactions that have **already been batched**.
 > Refunds typically take **3–7 business days** to appear, depending on the customer’s bank.
 
 🎥 **Operation Video:**  
-[Click to view Refund operation video](https://www.youtube.com/watch?v=REPLACE_ME)
+[Click to view Refund operation video](https://www.youtube.com/watch?v=1dH8gxlP87Y&list=PLUKpuydjO6RAAq-U9QVmedqcX6QxRdj1P&index=6)

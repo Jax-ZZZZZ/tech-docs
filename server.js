@@ -16,10 +16,35 @@ app.use(express.static(path.join(__dirname, 'public')));
 /* ======================
    Marked Config
 ====================== */
+const renderer = new marked.Renderer();
+
+// ✅ marked v5+：link(token) 形式
+const linkRendererV5 = (token) => {
+  const href = token.href || '';
+  const text = token.text || '';
+  const title = token.title ? ` title="${token.title}"` : '';
+  return `<a href="${href}"${title} target="_blank" rel="noopener noreferrer">${text}</a>`;
+};
+
+// ✅ marked v4：link(href, title, text) 形式
+const linkRendererV4 = (href, title, text) => {
+  const t = title ? ` title="${title}"` : '';
+  return `<a href="${href}"${t} target="_blank" rel="noopener noreferrer">${text}</a>`;
+};
+
+renderer.link = function (...args) {
+  // args[0] 是对象 => v5 token
+  if (args[0] && typeof args[0] === 'object') return linkRendererV5(args[0]);
+  // 否则 => v4 参数形式
+  return linkRendererV4(args[0], args[1], args[2]);
+};
+
 marked.setOptions({
   mangle: false,
-  headerIds: false
+  headerIds: false,
+  renderer
 });
+
 
 /* ======================
    Helpers
