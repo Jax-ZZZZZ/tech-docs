@@ -146,6 +146,17 @@ module.exports = {
             }
           },
           {
+            id: 'setup-callerid',
+            title: {
+              zh: '如何设置并连接来电显示',
+              en: 'How to Connect a Caller ID Device'
+            },
+            files: {
+              zh: 'hardware-setup-guide/setup-callerid-cn.md',
+              en: 'hardware-setup-guide/setup-callerid-en.md'
+            }
+          },
+          {
             id: 'connect-gift-card-reader',
             title: {
               zh: '如何连接礼品卡刷卡槽',
