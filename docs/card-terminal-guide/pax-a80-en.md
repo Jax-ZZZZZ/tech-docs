@@ -1,7 +1,7 @@
-## PAX A80 Basic Operations Guide
+### PAX A80 Basic Operations Guide
 > This guide also applies to  PAX A920 Pro, as the operation procedures are the same.
 
-### 1. Sale (Payment)
+#### 1. Sale (Payment)
 
 Used for normal card or electronic payment transactions.
 
@@ -22,7 +22,7 @@ Used for normal card or electronic payment transactions.
 
 ---
 
-### 2. Void Sale (Cancel Payment)
+#### 2. Void Sale (Cancel Payment)
 
 Used to cancel a transaction **on the same day before Batch settlement**.
 
@@ -43,7 +43,7 @@ Used to cancel a transaction **on the same day before Batch settlement**.
 
 ---
 
-### 3. Add Tips
+#### 3. Add Tips
 
 Used to add tips to a transaction that is **already completed but not yet batched**.
 
@@ -63,7 +63,7 @@ Used to add tips to a transaction that is **already completed but not yet batche
 
 ---
 
-### 4. Batch (Settlement / Close Batch)
+#### 4. Batch (Settlement / Close Batch)
 
 Used to **submit all completed transactions of the day to the bank for settlement**.
 
@@ -82,7 +82,7 @@ Used to **submit all completed transactions of the day to the bank for settlemen
 
 ---
 
-### 5. Force Auth (Force Authorization / Force Tip)
+#### 5. Force Auth (Force Authorization / Force Tip)
 
 Used when a **bank authorization code (Auth Code)** has already been obtained,  
 commonly in cases of network issues or special tip adjustments.
@@ -102,7 +102,7 @@ commonly in cases of network issues or special tip adjustments.
 
 ---
 
-### 6. Refund
+#### 6. Refund
 
 Used to refund transactions that have **already been batched**.
 

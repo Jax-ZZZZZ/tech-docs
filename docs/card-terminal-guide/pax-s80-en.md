@@ -1,11 +1,11 @@
-## PAX S80 Basic Operations Guide
+### PAX S80 Basic Operations Guide
 
 > Note: PAX S80 has been discontinued and is supported for maintenance purposes only.  
 > The S80 is a button-based terminal (non-touchscreen) and is operated using **FUNC + arrow keys + ENTER**.
 
 ---
 
-### 1. Sale (Payment)
+#### 1. Sale (Payment)
 
 Used for normal payment transactions.
 
@@ -23,7 +23,7 @@ Used for normal payment transactions.
 
 ---
 
-### 2. Void Sale (Cancel Payment)
+#### 2. Void Sale (Cancel Payment)
 
 Used to cancel a transaction **on the same day before Batch settlement**.
 
@@ -43,7 +43,7 @@ Used to cancel a transaction **on the same day before Batch settlement**.
 
 ---
 
-### 3. Add Tips (Tip Adjust)
+#### 3. Add Tips (Tip Adjust)
 
 Used to add tips to a transaction that is **completed but not yet batched**.
 
@@ -63,7 +63,7 @@ Used to add tips to a transaction that is **completed but not yet batched**.
 
 ---
 
-### 4. Batch (Settlement / Batch Close)
+#### 4. Batch (Settlement / Batch Close)
 
 Used to submit all completed transactions of the day **to the bank for settlement**.
 
@@ -83,7 +83,7 @@ Used to submit all completed transactions of the day **to the bank for settlemen
 
 ---
 
-### 5. Force Auth (Force Authorization)
+#### 5. Force Auth (Force Authorization)
 
 Used when a **bank authorization code (Auth Code)** has already been obtained,  
 commonly after a network issue or voice authorization.
@@ -105,7 +105,7 @@ commonly after a network issue or voice authorization.
 
 ---
 
-### 6. Refund (Return)
+#### 6. Refund (Return)
 
 Used to refund transactions that have **already been batched**.
 

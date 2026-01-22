@@ -1,4 +1,4 @@
-## PAX S300 Basic Operations Guide
+### PAX S300 Basic Operations Guide
 
 > This operation guide also applies to **PAX A35**. The operation flow is identical.  
 > Note: PAX S300 has been discontinued and is supported for maintenance purposes only.  
@@ -7,7 +7,7 @@
 
 ---
 
-### 1. Sale (Chip / EMV) — Chip Card Payment
+#### 1. Sale (Chip / EMV) — Chip Card Payment
 
 Used when the customer pays with a **chip-enabled credit or debit card**.
 
@@ -29,7 +29,7 @@ Used when the customer pays with a **chip-enabled credit or debit card**.
 
 ---
 
-### 2. Sale (Contactless / Tap) — Contactless Payment
+#### 2. Sale (Contactless / Tap) — Contactless Payment
 
 Used for **Tap / Contactless** payments.
 
@@ -51,7 +51,7 @@ Used for **Tap / Contactless** payments.
 
 ---
 
-### 3. Sale (Apple Pay) — Apple Pay Payment
+#### 3. Sale (Apple Pay) — Apple Pay Payment
 
 Used for **Apple Pay and mobile wallet** payments.
 
@@ -72,7 +72,7 @@ Used for **Apple Pay and mobile wallet** payments.
 
 ---
 
-### 4. Sale (Manual / Key-In) — Manual Card Entry Payment
+#### 4. Sale (Manual / Key-In) — Manual Card Entry Payment
 
 Used when the card cannot be inserted or tapped (**higher risk**).
 
@@ -95,7 +95,7 @@ Used when the card cannot be inserted or tapped (**higher risk**).
 
 ---
 
-### 5. Void Sales (Cancel Payment)
+#### 5. Void Sales (Cancel Payment)
 
 Used to void a transaction **on the same day before Batch settlement**.
 
@@ -114,7 +114,7 @@ Used to void a transaction **on the same day before Batch settlement**.
 
 ---
 
-### 6. Add Tips
+#### 6. Add Tips
 
 Used to add tips to a transaction that is **completed but not yet batched**.
 
@@ -133,7 +133,7 @@ Used to add tips to a transaction that is **completed but not yet batched**.
 
 ---
 
-### 7. Batch (Settlement)
+#### 7. Batch (Settlement)
 
 Used to submit all completed transactions **to the bank for settlement**.
 
@@ -156,7 +156,7 @@ Used to submit all completed transactions **to the bank for settlement**.
 
 ---
 
-### 8. Force Auth (Force Authorization / Force Tip)
+#### 8. Force Auth (Force Authorization / Force Tip)
 
 Used to post a transaction or tip **when an authorization code (Auth Code) has already been obtained**.
 
@@ -182,7 +182,7 @@ Used to post a transaction or tip **when an authorization code (Auth Code) has a
 
 ---
 
-### 9. Refund (Chip) — Chip Card Refund
+#### 9. Refund (Chip) — Chip Card Refund
 
 Used to refund **batched chip card transactions**.
 
@@ -207,7 +207,7 @@ Used to refund **batched chip card transactions**.
 
 ---
 
-### 10. Refund (Manual) — Manual Card Entry Refund
+#### 10. Refund (Manual) — Manual Card Entry Refund
 
 Used when the physical card cannot be read.
 

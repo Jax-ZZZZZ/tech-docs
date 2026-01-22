@@ -430,17 +430,30 @@ body {
   border-radius: 8px;
 }
 
-/* Small / Medium / Large */
+/* Small / Medium / Large (responsive) */
 .content img.img-sm {
-  max-width: 300px;
+  max-width: clamp(180px, 60vw, 320px);
 }
 
 .content img.img-md {
-  max-width: 520px;
+  max-width: clamp(240px, 85vw, 640px);
 }
 
 .content img.img-lg {
+  width: 100%;
   max-width: 100%;
+}
+
+.content img {
+  image-rendering: auto;
+}
+
+/* Optional: inline image escape hatch */
+.content img.img-inline {
+  display: inline;
+  margin: 0;
+  vertical-align: middle;
+  border-radius: 0;
 }
 
 /* Search highlight */

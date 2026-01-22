@@ -1,6 +1,6 @@
-# New Restaurant Merchant POS Quick Start Guide
+### New Restaurant Merchant POS Quick Start Guide
 
-## 1. Information to Verify Before First POS Use
+### 1. Information to Verify Before First POS Use
 
 Before processing any transactions, please make sure the following business information is accurate:
 
@@ -14,9 +14,9 @@ Please review carefully.
 
 ---
 
-## 2. Important Notes for First-Time Terminal Use
+### 2. Important Notes for First-Time Terminal Use
 
-### 2.1 Debit Card Pre-Authorization
+#### 2.1 Debit Card Pre-Authorization
 
 For **debit cards with relatively low available balances (approximately under $1,000)**, restaurant merchants may trigger a **bank pre-authorization**:
 
@@ -33,7 +33,7 @@ After the restaurant completes the nightly **Batch (settlement)**, the bank will
 
 ---
 
-### 2.2 Recommended Payment Methods and Security Levels
+#### 2.2 Recommended Payment Methods and Security Levels
 
 Recommended payment methods (from **highest to lowest security**, and **lowest to highest processing cost**):
 
@@ -52,7 +52,7 @@ Notes:
 
 ---
 
-### 2.3 Manual Card Entry: Risks and Requirements
+#### 2.3 Manual Card Entry: Risks and Requirements
 
 Manual Entry transactions typically require only:
 
@@ -85,7 +85,7 @@ Reason: Fraudsters typically do not possess the physical card.
 
 ---
 
-### 2.4 Credit Card Surcharges, Cash Discounts, and Visa Compliance
+#### 2.4 Credit Card Surcharges, Cash Discounts, and Visa Compliance
 
 Visa conducts periodic compliance audits.  
 If significant violations are identified, Visa may impose **substantial fines**, including but not limited to:
