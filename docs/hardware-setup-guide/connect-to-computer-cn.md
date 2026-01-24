@@ -1,4 +1,4 @@
-### 电脑开箱与连接设置
+#### 电脑开箱与连接设置
 
 🎥 **操作视频**  
 [点击查看操作视频](https://www.youtube.com/watch?v=rYXCFli6QMM&list=PLUKpuydjO6RBXffcDwoGk_QpgRuBj7t1o&index=1)

@@ -1,4 +1,4 @@
-### Caller ID Modem 连接说明
+#### Caller ID Modem 连接说明
 
 Caller ID Modem 用于在来电时，将电话号码传输到 POS 系统中进行识别。
 

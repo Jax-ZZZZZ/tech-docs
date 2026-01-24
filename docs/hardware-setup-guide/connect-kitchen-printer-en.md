@@ -1,4 +1,4 @@
-### Kitchen Printer Setup
+#### Kitchen Printer Setup
 
 ---
 

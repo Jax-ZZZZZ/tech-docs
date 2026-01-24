@@ -1,4 +1,4 @@
-### Guest Receipt Printer Setup
+#### Guest Receipt Printer Setup
 
 ---
 

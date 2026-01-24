@@ -1,4 +1,4 @@
-### Cash Drawer Connection Guide
+##### Cash Drawer Connection Guide
 
 <img
   src="/images/cashdrawer.png"

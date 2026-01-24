@@ -1,4 +1,4 @@
-### MSR (Gift Card Reader) Installation Guide
+#### MSR (Gift Card Reader) Installation Guide
 <img
   src="/images/msr.png"
   alt="MSR bracket"

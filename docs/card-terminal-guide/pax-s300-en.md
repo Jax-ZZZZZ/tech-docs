@@ -1,4 +1,4 @@
-### PAX S300 Basic Operations Guide
+#### PAX S300 Basic Operations Guide
 
 > This operation guide also applies to **PAX A35**. The operation flow is identical.  
 > Note: PAX S300 has been discontinued and is supported for maintenance purposes only.  

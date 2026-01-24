@@ -1,4 +1,4 @@
-### Computer Setup & Connection Guide
+#### Computer Setup & Connection Guide
 
 
 🎥 **Video Guide**  

@@ -1,4 +1,4 @@
-### PAX S80 Basic Operations Guide
+#### PAX S80 Basic Operations Guide
 
 > Note: PAX S80 has been discontinued and is supported for maintenance purposes only.  
 > The S80 is a button-based terminal (non-touchscreen) and is operated using **FUNC + arrow keys + ENTER**.

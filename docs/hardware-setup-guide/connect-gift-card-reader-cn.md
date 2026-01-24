@@ -1,4 +1,4 @@
-### MSR（礼品卡刷槽） 组件安装说明
+#### MSR（礼品卡刷槽） 组件安装说明
 <img
   src="/images/msr.png"
   alt="MSR bracket"

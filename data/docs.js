@@ -54,50 +54,6 @@ module.exports = {
     ]
   },
 
-  cardTerminalGuide: {
-    name: { zh: '刷卡机使用指南', en: 'Card Terminal User Guide' },
-    children: [
-      {
-        name: { zh: 'PAX 机型', en: 'PAX Models' },
-        items: [
-          {
-            id: 'pax-s300',
-            title: {
-              zh: 'PAX S300 & A35 基本操作',
-              en: 'PAX S300 & A35 Basic Operations'
-            },
-            files: {
-              zh: 'card-terminal-guide/pax-s300-cn.md',
-              en: 'card-terminal-guide/pax-s300-en.md'
-            }
-          },
-          {
-            id: 'pax-a80',
-            title: {
-              zh: 'PAX A80 & A920 基本操作',
-              en: 'PAX A80 & A920 Basic Operations'
-            },
-            files: {
-              zh: 'card-terminal-guide/pax-a80-cn.md',
-              en: 'card-terminal-guide/pax-a80-en.md'
-            }
-          },
-          {
-            id: 'pax-s80',
-            title: {
-              zh: 'PAX S80 基本操作',
-              en: 'PAX S80 Basic Operations'
-            },
-            files: {
-              zh: 'card-terminal-guide/pax-s80-cn.md',
-              en: 'card-terminal-guide/pax-s80-en.md'
-            }
-          }
-        ]
-      }
-    ]
-  },
-
   hardwareSetupGuide: {
     name: { zh: '硬件设置指南', en: 'Hardware Setup Guide' },
     children: [
@@ -137,7 +93,7 @@ module.exports = {
           {
             id: 'setup-cash-drawer',
             title: {
-              zh: '如何设置并连接钱箱',
+              zh: '如何连接并设置钱箱',
               en: 'How to Connect a Cash Drawer'
             },
             files: {
@@ -148,7 +104,7 @@ module.exports = {
           {
             id: 'setup-callerid',
             title: {
-              zh: '如何设置并连接来电显示',
+              zh: '如何连接并设置来电显示',
               en: 'How to Connect a Caller ID Device'
             },
             files: {
@@ -187,6 +143,83 @@ module.exports = {
             files: {
               zh: 'hardware-setup-guide/hhd-change-cn.md',
               en: 'hardware-setup-guide/hhd-change-en.md'
+            }
+          }
+        ]
+      }
+    ]
+  },
+
+  cardTerminalGuide: {
+    name: { zh: '刷卡机使用指南', en: 'Card Terminal User Guide' },
+    children: [
+      {
+        name: { zh: 'PAX 机型', en: 'PAX Models' },
+        items: [
+          {
+            id: 'connect-cc-machines-A35 / S300',
+            title: {
+              zh: '如何连接刷卡机 A35 / S300',
+              en: 'How to Connect a Card Terminal A35 / S300'
+            },
+            files: {
+              zh: 'card-terminal-guide/connect-cc-machines-s300-a35-cn.md',
+              en: 'card-terminal-guide/connect-cc-machines-s300-a35-en.md'
+            }
+          },
+          {
+            id: 'pax-s300',
+            title: {
+              zh: '刷卡机 A35 & S300 基本使用操作',
+              en: 'PAX A35 & S300 Basic Operations'
+            },
+            files: {
+              zh: 'card-terminal-guide/pax-s300-cn.md',
+              en: 'card-terminal-guide/pax-s300-en.md'
+            }
+          },
+          {
+            id: 'connect-cc-machines-A80/A920',
+            title: {
+              zh: '如何连接刷卡机 A80 / A920',
+              en: 'How to Connect a Card Terminal A80 / A920'
+            },
+            files: {
+              zh: 'card-terminal-guide/connect-cc-machines-a80-a920-cn.md',
+              en: 'card-terminal-guide/connect-cc-machines-a80-a920-en.md'
+            }
+          },
+          {
+            id: 'pax-a80',
+            title: {
+              zh: '刷卡机 A80 & A920 基本使用操作',
+              en: 'PAX A80 & A920 Basic Operations'
+            },
+            files: {
+              zh: 'card-terminal-guide/pax-a80-cn.md',
+              en: 'card-terminal-guide/pax-a80-en.md'
+            }
+          },
+          {
+            id: 'connect-cc-machines-S80',
+            title: {
+              zh: '如何连接刷卡机 S80',
+              en: 'How to Connect a Card Terminal S80'
+            },
+            files: {
+              zh: 'card-terminal-guide/connect-cc-machines-s80-cn.md',
+              en: 'card-terminal-guide/connect-cc-machines-s80-en.md'
+            }
+          },
+          {
+            id: 'pax-s80',
+            title: {
+              zh: '刷卡机 S80 基本操作',
+              en: 'PAX S80 Basic Operations'
+            },
+            files: {
+              zh: 'card-terminal-guide/pax-s80-cn.md',
+              en: 'card-terminal-guide/pax-s80-en.md'
             }
           }
         ]

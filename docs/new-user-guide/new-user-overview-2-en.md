@@ -1,4 +1,4 @@
-### Payment Method Security & Risk Disclosure
+#### Payment Method Security & Risk Disclosure
 
 To ensure transaction security and reduce the risk of chargebacks,  
 we recommend using the following payment methods in order of security (from highest to lowest):
@@ -19,7 +19,7 @@ Notes:
 
 ---
 
-### Manual Entry Risk Notice
+#### Manual Entry Risk Notice
 
 Manual Entry transactions usually require only:
 - Card number

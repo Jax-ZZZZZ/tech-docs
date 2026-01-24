@@ -1,4 +1,4 @@
-### Credit Card Surcharge & Compliance
+#### Credit Card Surcharge & Compliance
 
 Visa conducts regular compliance reviews.  
 If any of the following violations are identified, the restaurant may face **significant fines or account risk**:
@@ -9,7 +9,7 @@ If any of the following violations are identified, the restaurant may face **sig
 
 ---
 
-### Key Compliance Guidelines
+#### Key Compliance Guidelines
 
 #### Minimum Purchase Amount
 - **Debit Cards: Minimum purchase amounts are NOT allowed**

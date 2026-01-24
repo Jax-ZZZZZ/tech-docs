@@ -1,4 +1,4 @@
-### 钱箱连接说明
+#### 钱箱连接说明
 
 <img
   src="/images/cashdrawer.png"

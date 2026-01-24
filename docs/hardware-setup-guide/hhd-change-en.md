@@ -1,4 +1,4 @@
-### HDD Tray Disassembly
+#### HDD Tray Disassembly
 
 <img
   src="/images/hhdtraydisassembly.png"

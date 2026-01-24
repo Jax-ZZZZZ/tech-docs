@@ -1,6 +1,6 @@
 ### New Restaurant Merchant POS Quick Start Guide
 
-### 1. Information to Verify Before First POS Use
+#### 1. Information to Verify Before First POS Use
 
 Before processing any transactions, please make sure the following business information is accurate:
 
@@ -14,7 +14,7 @@ Please review carefully.
 
 ---
 
-### 2. Important Notes for First-Time Terminal Use
+#### 2. Important Notes for First-Time Terminal Use
 
 #### 2.1 Debit Card Pre-Authorization
 

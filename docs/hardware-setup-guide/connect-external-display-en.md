@@ -1,4 +1,4 @@
-### Second Display (9.7 / 12.1 / 15 inch) & CDP Installation Guide
+#### Second Display (9.7 / 12.1 / 15 inch) & CDP Installation Guide
 
 <img
   src="/images/cdp.png"

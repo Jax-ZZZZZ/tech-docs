@@ -1,4 +1,4 @@
-### 储蓄卡预授权说明（Debit Card Pre-Authorization）
+#### 储蓄卡预授权说明（Debit Card Pre-Authorization）
 
 当使用**余额较低（通常低于 $1000）的储蓄卡 / 借记卡**进行消费时，  
 餐馆类交易可能触发银行的**预授权机制**：

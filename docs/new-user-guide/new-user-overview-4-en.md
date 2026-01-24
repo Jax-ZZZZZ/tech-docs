@@ -1,4 +1,4 @@
-### Debit Card Pre-Authorization Notice
+#### Debit Card Pre-Authorization Notice
 
 When a **debit card with a low available balance (typically under $1,000)** is used,  
 restaurant transactions may trigger a **pre-authorization hold** from the bank:

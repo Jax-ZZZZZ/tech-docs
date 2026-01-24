@@ -1,4 +1,4 @@
-### Before Using POS& Credit Card Machine
+#### Before Using POS& Credit Card Machine
 
 Before you start using the POS system, please carefully verify that the following information is accurate:
 

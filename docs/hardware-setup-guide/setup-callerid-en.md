@@ -1,4 +1,4 @@
-### Caller ID Modem Connection Guide
+#### Caller ID Modem Connection Guide
 
 The Caller ID Modem allows incoming phone numbers to be detected and displayed in the POS system.
 

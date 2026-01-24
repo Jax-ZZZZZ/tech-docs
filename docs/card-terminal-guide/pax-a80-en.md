@@ -1,4 +1,4 @@
-### PAX A80 Basic Operations Guide
+#### PAX A80 Basic Operations Guide
 > This guide also applies to  PAX A920 Pro, as the operation procedures are the same.
 
 #### 1. Sale (Payment)
