@@ -519,3 +519,37 @@ body {
     opacity: 0.08;
   }
 }
+
+
+/* Welcome card (shown when no doc selected) */
+.welcome-card {
+  max-width: 640px;
+  margin: 48px auto;
+  padding: 20px 18px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 14px;
+  text-align: center;
+}
+
+[data-theme="dark"] .welcome-card {
+  background: rgba(15, 23, 42, 0.6);
+}
+
+.welcome-title {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.welcome-sub {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.welcome-sub-muted {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 13px;
+}

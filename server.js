@@ -88,7 +88,7 @@ function loadMarkdown(relPath) {
 }
 
 function pickLang(queryLang) {
-  return queryLang === 'en' ? 'en' : 'zh';
+  return queryLang === 'zh' ? 'zh' : 'en';
 }
 
 function pickDocPath(meta, lang) {

@@ -79,3 +79,21 @@ This is a Help Center / User Guide system designed for restaurant owners.
 ## Current Status
 - Ready for `git push`
 - At a “production-ready external Help Center” stage
+
+
+git:
+git status
+git add .
+git commit -m "Update docs and UI tweaks"
+git push
+
+
+ssh jax@NAS_IP
+cd /volume1/docker/help-center
+git pull
+docker compose down
+docker compose up -d --build
+docker compose logs -f 看实时日志（排错必备）
+docker compose logs --tail=200 只看最近 200 行日志
+docker image prune -f  ⚠️ 会清理未使用镜像
+

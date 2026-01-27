@@ -9,9 +9,9 @@
     </span>
   </div>
 
-  ${Object.values(docs).map(group => `
+  ${Object.entries(docs).map(([groupKey, group]) => `
     <div class="menu-group">
-      <div class="menu-cat-title" onclick="toggle(this)" role="button" tabindex="0">
+      <div class="menu-cat-title" data-key="${groupKey}" onclick="toggle(this)" role="button" tabindex="0">
         ${(typeof group.name === 'object' ? (group.name[lang] || group.name.zh) : group.name)}
       </div>
 
@@ -43,17 +43,16 @@
       htmlContent
         ? htmlContent
         : `
-          <div class="empty-state">
-            <p class="empty-text desktop-only">
-              ${lang === 'en'
-                ? 'Welcome to the Beyond Menu POS Help Center. Please select a document to get started.'
-                : '欢迎来到Beyond Menu POS操作指南，请选择一个文档开始查看。'}
-            </p>
-            <p class="empty-text mobile-only">
-              ${lang === 'en'
-                ? 'Welcome! Tap “Help Center” above to explore the Beyond Menu POS guides.'
-                : '点击上方「操作指南」开始查看Beyond Menu POS操作指南。'}
-            </p>
+          <div class="welcome-card">
+            <div class="welcome-title">
+              ${lang === 'en' ? 'Welcome to the Help Center' : '欢迎来到操作指南'}
+            </div>
+            <div class="welcome-sub welcome-sub-muted">
+              <br/>
+              Tap 'Help Center' above to browse documents · Switch language at the top right.
+              <br/>
+              点击上方「操作指南」浏览文档 · 右上角可切换语言。
+            </div>
           </div>
         `
     }
