@@ -47,6 +47,16 @@ module.exports = {
             files: {
               zh: 'new-user-guide/new-user-overview-4-cn.md',
               en: 'new-user-guide/new-user-overview-4-en.md'
+            },
+          {
+            id: 'new-user-overview-5',
+            title: {
+              zh: '常用软件下载',
+              en: 'Software Downloads'
+            },
+            files: {
+              zh: 'new-user-guide/new-user-overview-5-cn.md',
+              en: 'new-user-guide/new-user-overview-5-en.md'
             }
           }
         ]
